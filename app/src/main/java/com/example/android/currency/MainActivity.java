@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(JSONObject result) {
             pd.dismiss();
-            List<CurrencyFlags> currencyFlags = new ArrayList<>();
+            ArrayList<CurrencyFlags> currencyFlags = new ArrayList<>();
             pd.dismiss();
 
             try {
@@ -114,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
                 while (keysBTC.hasNext() && keysETH.hasNext()) {
                     String keyBTC = (String) keysBTC.next();
                     String keyETH = (String) keysETH.next();
+
                     currencyFlags.add(keyBTC, btc.getDouble(keyBTC), eth.getDouble(keyETH));
 
                     }

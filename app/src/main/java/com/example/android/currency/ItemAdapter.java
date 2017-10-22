@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -17,11 +18,11 @@ import java.util.List;
 public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context context;
     private LayoutInflater inflater;
-    List<CurrencyFlags> currencyFlags = Collections.emptyList();
+    ArrayList<CurrencyFlags> currencyFlags = new ArrayList<>();
     CurrencyFlags current;
     int currentPos=0;
 
-    public ItemAdapter(Context context, List<CurrencyFlags>currencyFlags) {
+    public ItemAdapter(Context context, ArrayList<CurrencyFlags> currencyFlags) {
         this.context = context;
         inflater = LayoutInflater.from(context);
         this.currencyFlags = currencyFlags;
