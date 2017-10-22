@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(JSONObject result) {
             pd.dismiss();
-            List<CurrencyFlags> currencyFlags = new ArrayList<>();
+            ArrayList<CurrencyFlags> currencyFlags = new ArrayList<>();
             pd.dismiss();
 
             try {
