@@ -40,9 +40,9 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         MyHolder myHolder = (MyHolder) holder;
         CurrencyFlags current = currencyFlags.get(position);
-        myHolder.textbtcUSD.setText("USD:" + current.btcUSD);
-        myHolder.textbtcEUR.setText("EUR" + current.btcEUR);
-        myHolder.textbtcJPY.setText("JPY" + current.btcJPY);
+        myHolder.moneyFlag.setText(current.flag);
+        myHolder.btcValue.setText(current.btcValue.toString());
+        myHolder.ethValue.setText(current.ethValue.toString());
 
 
     }
@@ -52,14 +52,14 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
     class MyHolder extends RecyclerView.ViewHolder {
 
-        TextView textbtcUSD;
-        TextView textbtcEUR;
-        TextView textbtcJPY;
+        TextView moneyFlag;
+        TextView btcValue;
+        TextView ethValue;
         public MyHolder(View itemView) {
             super(itemView);
-            textbtcUSD = (TextView) itemView.findViewById(R.id.textbtcUSD);
-            textbtcEUR = (TextView) itemView.findViewById(R.id.textbtcEUR);
-            textbtcJPY = (TextView) itemView.findViewById(R.id.textbtcJPY);
+            moneyFlag = (TextView) itemView.findViewById(R.id.moneyFlag);
+            btcValue = (TextView) itemView.findViewById(R.id.btcValue);
+            ethValue = (TextView) itemView.findViewById(R.id.ethValue);
 
         }
     }

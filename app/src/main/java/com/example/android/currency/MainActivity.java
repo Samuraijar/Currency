@@ -4,12 +4,10 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -21,14 +19,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Currency;
 import java.util.Iterator;
-import java.util.List;
-
-import static android.R.attr.key;
-import static android.R.attr.x;
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
-import static java.lang.System.in;
 
 public class MainActivity extends AppCompatActivity {
     public static final int CONNECTION_TIMEOUT = 10000;
@@ -98,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
                 conn.disconnect();
             }
         }
-
         @Override
         protected void onPostExecute(JSONObject result) {
             pd.dismiss();
@@ -114,18 +104,24 @@ public class MainActivity extends AppCompatActivity {
                 while (keysBTC.hasNext() && keysETH.hasNext()) {
                     String keyBTC = (String) keysBTC.next();
                     String keyETH = (String) keysETH.next();
+                    CurrencyFlags currencyFlags1 = new CurrencyFlags();
 
-                    currencyFlags.add(keyBTC, btc.getDouble(keyBTC), eth.getDouble(keyETH));
+                    currencyFlags1.flag = keyBTC;
+                    currencyFlags1.btcValue = btc.getDouble(keyBTC);
+                    currencyFlags1.ethValue = eth.getDouble(keyETH);
+                    currencyFlags.add(currencyFlags1);
 
-                    }
+                }
 
-                    recyclerView = (RecyclerView) findViewById(R.id.recycler);
-                    itemAdapter = new ItemAdapter(MainActivity.this, currencyFlags);
-                    recyclerView.setAdapter(itemAdapter);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-                } catch (JSONException e) {
+                recyclerView = (RecyclerView) findViewById(R.id.recycler);
+                itemAdapter = new ItemAdapter(MainActivity.this, currencyFlags);
+                recyclerView.setAdapter(itemAdapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+            } catch (JSONException e) {
                 Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_LONG).show();
             }
+
+
 
         }
     }

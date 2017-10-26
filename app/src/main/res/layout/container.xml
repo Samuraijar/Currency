@@ -6,14 +6,14 @@
     android:clickable="true">
 
     <TextView
-        android:id="@+id/textbtcUSD"
+        android:id="@+id/moneyFlag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:textAppearanceMedium"
         android:text="btc USD"/>
 
     <TextView
-        android:id="@+id/textbtcEUR"
+        android:id="@+id/btcValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:textAppearanceMedium"
@@ -21,11 +21,11 @@
         android:layout_alignParentRight="true"/>
 
     <TextView
-        android:id="@+id/textbtcJPY"
+        android:id="@+id/ethValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:textAppearanceMedium"
         android:text="btc USD"
-        android:layout_toRightOf="@id/textbtcEUR"/>
+        android:layout_toRightOf="@id/btcValue"/>
 
 </RelativeLayout>
