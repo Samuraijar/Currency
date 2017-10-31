@@ -51,8 +51,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             try {
-                url = new URL("https://mini-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH&tsyms=USD,EUR,JPY,CHF,AUD" +
-                        ",HKD,NGN,CNY,NZD,BRL,KRW,NOK,GBP,SEK,MXN,SDG,NOK,INR,TRY,RUB,NOK");
+                url = new URL("https://mini-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH&tsyms=USD,EUR,JPY,CHF,AUD,HKD,NGN,CNY,NZD,BRL,KRW,NOK,GBP,SEK,MXN,SDG,NOK,INR,TRY,RUB,NOK");
             } catch (MalformedURLException e) {
                 e.printStackTrace();
                 return e.toString();
@@ -90,14 +89,14 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         @Override
-        protected void onPostExecute(JSONObject result) {
+        protected void onPostExecute(String result) {
             pd.dismiss();
             ArrayList<CurrencyFlags> currencyFlags = new ArrayList<>();
-            pd.dismiss();
 
             try {
-                JSONObject btc = result.getJSONObject("BTC".trim());
-                JSONObject eth = result.getJSONObject("ETH".trim());
+                JSONObject jsonObject = new JSONObject(result);
+                JSONObject btc = jsonObject.getJSONObject("BTC".trim());
+                JSONObject eth = jsonObject.getJSONObject("ETH".trim());
                 Iterator<?> keysBTC = btc.keys();
                 Iterator<?> keysETH = eth.keys();
 
